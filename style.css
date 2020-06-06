@@ -1,0 +1,8 @@
+* {
+  opacity: 0;
+}
+
+html, body {
+  opacity: 1;
+  background-color: #111;
+}

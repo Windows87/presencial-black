@@ -1,0 +1,30 @@
+  
+{
+    "name": "EADFlix Muz",
+    "version": "1.0",
+    "manifest_version": 2,
+    "description": "EADFlix Muz",
+    "content_scripts": [
+        {
+          "matches": ["https://presencial.muz.ifsuldeminas.edu.br/*"],
+          "run_at": "document_start",
+          "css": ["style.css"]
+        },
+        {
+            "matches": ["https://presencial.muz.ifsuldeminas.edu.br/*"],
+            "run_at": "document_end",
+            "js": ["script.js"]
+        }
+    ],
+    "permissions": [
+        "activeTab"
+    ],
+    "web_accessible_resources": [
+        "img/favicon-32x32.png"
+    ],
+    "icons": {
+        "16": "img/favicon-16x16.png",
+        "32": "img/favicon-32x32.png",
+        "96": "img/favicon-96x96.png"
+    }
+}
