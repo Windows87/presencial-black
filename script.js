@@ -38,7 +38,7 @@ body {
   background-color: #111;
   margin: 0;
   padding: 8px;
-  width: 100% !important;
+  width: calc(100% - 16px) !important;
 }
 
 ::-webkit-scrollbar{
@@ -67,13 +67,13 @@ body {
 }
 
 .dropdown-menu {
-  color: white;
+  color: white !important;
   background-color: #181818;
   border: unset;
 }
 
-.popover-region-container, .see-all-link {
-  background-color: #111;
+.popover-region-container, .popover-region-container * {
+  background-color: #111 !important;
 }
 
 .dropdown-menu li a:hover {
@@ -230,6 +230,16 @@ h2, h1, h3 {
   background-color: transparent;
   border-radius: 0;
 }
+
+.forumpost {
+  background-color: #292929;
+  border: 0;
+}
+
+.forumpost * {
+  background-color: #292929 !important;
+  color: white;
+}
 `;
 
 
@@ -241,10 +251,6 @@ var styleNoFirstPage = document.createElement('style');
 styleNoFirstPage.innerHTML = `
 .row-fluid {
   display: unset;
-}
-
-.outercont {
-  margin-top: 50px;
 }
 
 i, p, span, h1, li {
@@ -263,12 +269,23 @@ div[role="main"] {
     display: unset;
 }
 
+.sectionname span {
+  color: white !important;
+  font-weight: bold;
+  font-family: Teko;
+}
+
 * {
   background-color: #111 !important;
 }
 
 .sectionname {
   background-color: unset !important;
+}
+
+input[type="submit"] {
+  background-color: black !important;
+  font-family: Hind !important;
 }
 `;
 
@@ -314,7 +331,8 @@ const eadFlix = document.querySelector('img');
 eadFlix.src = 'https://i.imgur.com/YI225MN.png';
 eadFlix.style.width = '130px';
 
-navbarNav1.insertBefore(eadFlix, navbarNav1.firstChild);
+if(navbarNav1)
+  navbarNav1.insertBefore(eadFlix, navbarNav1.firstChild);
 
 // NavIcons
 navIcons.forEach(navIcon => navIcon.remove());
@@ -323,14 +341,16 @@ navIcons.forEach(navIcon => navIcon.remove());
 const notification = document.querySelector('#nav-notification-popover-container');
 const messages = document.querySelector('#nav-message-popover-container');
 
-pullRight.innerHTML = headerMenu.innerHTML;
-pullRight.innerHTML = pullRight.innerHTML.replace(headerMenu.innerText, '');
+if(pullRight) {
+  pullRight.innerHTML = headerMenu.innerHTML;
+  pullRight.innerHTML = pullRight.innerHTML.replace(headerMenu.innerText, '');
 //pullRight.querySelector('img').style.width = '30px';
 
-pullRight.appendChild(notification);
-pullRight.appendChild(messages);
-
-aboveHeader.remove();
+  pullRight.appendChild(notification);
+  pullRight.appendChild(messages);
+  
+  aboveHeader.remove();
+}
 
 // A
 a.forEach(aF => aF.style.cssText = 'color: white !important');
