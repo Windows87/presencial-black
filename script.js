@@ -287,6 +287,11 @@ input[type="submit"] {
   background-color: black !important;
   font-family: Hind !important;
 }
+
+#page {
+  height: unset;
+  min-height: 60px;
+}
 `;
 
 if(!isFirstPage)
@@ -322,7 +327,8 @@ function getImage(query) {
 }
 
 // PageHeader
-pageHeader.remove();
+if(pageHeader)
+  pageHeader.remove();
 
 // Nav
 const navbarNav1 = document.querySelector('.navbar .container-fluid .navbar-nav');
